@@ -94,6 +94,7 @@ class SignUpForm extends React.Component{
                         </span>
                     </fieldset>
                 </div>
+                <div>Hello</div>
                 <SubmitButton member={buildMember(this.state)}
                               insuranceCarrierID={this.state.insuranceCarrierID}
                               handleChange={this.handleInsurnace}/>
