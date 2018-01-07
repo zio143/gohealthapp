@@ -17,7 +17,7 @@ export class SubmitButton extends React.Component{
                 'authtoken': 'ghWhite145'},
         })
             .then(res => res.json())
-            .then(json => dothething(json, this.props.handleChange));
+            .then(json => updateInsurance(json, this.props.handleChange));
     }
 
     render(){
@@ -28,9 +28,11 @@ export class SubmitButton extends React.Component{
     }
 }
 
-function dothething(json, onChange){
-    console.log(json['data']['coverage']['copay'][0]['copayment']['amount']);
-    console.log(json['data']);
+function updateInsurance(json, onChange){
+    let copayAmount = json['data']['coverage']['copay'][0]['copayment']['amount'];
+    let active = json['data']['coverage']['active'];
+
+    onChange(copayAmount, active);
 }
 
 function buildRequestBody(patient, insurnaceCarrierID){
