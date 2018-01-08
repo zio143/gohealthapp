@@ -29,13 +29,18 @@ export class SubmitButton extends React.Component{
 }
 
 function updateInsurance(json, onChange){
-    let copayAmount = json['data']['coverage']['copay'][0]['copayment']['amount'];
-    let active = json['data']['coverage']['active'];
+    let copayAmount,
+        active;
+
+    if(!(typeof json['data'] === "undefined")){
+        copayAmount = json['data']['coverage']['copay'][0]['copayment']['amount'];
+        active = json['data']['coverage']['active'];
+    }
 
     onChange(copayAmount, active);
 }
 
-function buildRequestBody(patient, insurnaceCarrierID){
+function buildRequestBody(patient, insuranceCarrierID){
     let myData;
 
     let member = {
@@ -51,7 +56,7 @@ function buildRequestBody(patient, insurnaceCarrierID){
         npi: "1234567890"
     };
 
-    let trading_partner_id = insurnaceCarrierID;
+    let trading_partner_id = insuranceCarrierID;
     myData = {
         member,
         provider,

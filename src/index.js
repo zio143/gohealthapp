@@ -9,7 +9,7 @@ class SignUpForm extends React.Component{
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleInsurnace = this.handleInsurnace.bind(this);
+        this.handleInsurance = this.handleInsurance.bind(this);
         this.state = {
             firstName: '',
             lastName: '',
@@ -32,7 +32,7 @@ class SignUpForm extends React.Component{
         });
     }
 
-    handleInsurnace(copay, active){
+    handleInsurance(copay, active){
         this.setState({
            copayment: copay,
            active: active,
@@ -90,14 +90,13 @@ class SignUpForm extends React.Component{
                                    handleChange={this.handleChange}/>
                         <span>
                             <div>Coverage: {this.state.showSection ? this.state.active ? "Active" : "Not Active" : ""}</div>
-                            <div>Copayment: {this.state.showSection ? "$" + this.state.copayment : ""}</div>
+                            <div>Copayment: {this.state.showSection ? this.state.copayment ? "$" + this.state.copayment : "---" : ""}</div>
                         </span>
                     </fieldset>
                 </div>
-                <div>Hello</div>
                 <SubmitButton member={buildMember(this.state)}
                               insuranceCarrierID={this.state.insuranceCarrierID}
-                              handleChange={this.handleInsurnace}/>
+                              handleChange={this.handleInsurance}/>
             </div>
         );
     }
